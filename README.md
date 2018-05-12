@@ -4,7 +4,7 @@ A Web Project inspired by radio garden
 # 技术说明
 因为radio garden本来的3D地图服务在中国太慢了，因此本项目采用百度地图来提供地图服务
 
-#数据库schema
+# 数据库schema
 ### 说明：所有表的id字段都没用auto_increment
 
 ### 表名:channels
@@ -33,3 +33,10 @@ A Web Project inspired by radio garden
 | geo | json --> string | 字符传类型的地理坐标，使用是需要改为json |
 | channelCount | int | 对应城市的频道数量 |
 | timezone | int | 城市对应的时区 |
+
+# 前端使用vue.js来实现
+
+# 直播地址解析接口
+ http://stream.radio.garden/streams/g/guangzhou/rgd.php?1526136384665
+
+ 
