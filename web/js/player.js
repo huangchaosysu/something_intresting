@@ -24,7 +24,7 @@ function toggleFold(){
         document.getElementById('playlist').style.height="50px";
         l.classList.remove('active');
     } else {
-        document.getElementById('playlist').style.height="220px";    
+        document.getElementById('playlist').style.height="225px";    
         l.classList.add('active');
     }
 }
@@ -32,3 +32,4 @@ function toggleFold(){
 function playChannel(el){
     alert(el.innerText);
 }
+
