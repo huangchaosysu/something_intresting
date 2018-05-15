@@ -11,7 +11,7 @@ class RadioCodeApp {
     }
 
     changeChannel(ch_src) {
-        this.player.sources = {
+        this.player.source = {
             type: 'audio',
             sources: [{src: ch_src}],
         };
@@ -33,3 +33,28 @@ function playChannel(el){
     alert(el.innerText);
 }
 
+class VueApp {
+    constructor(id){
+        this.element_id = id;
+        //初始化vue
+        this.app = new Vue({
+            el: '#' + this.element_id,
+            data: {
+                cur_ch: '',
+                ch_list: [
+                    {name: "广东电台", src: "http://ctt.rgd.com.cn/fm914?t=1526125301"},
+                    {name: "channel2", src: ""},
+                    {name: "channel3", src: ""},
+                    {name: "channel4", src: ""},
+                    {name: "channel5", src: ""}
+                ]
+            },
+            methods: {
+                play: function (src) {
+                    alert(src);
+                    window.radioapp.changeChannel(src);
+                }
+            }
+        })
+    }
+}

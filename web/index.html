@@ -20,33 +20,30 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.3.7/plyr.css">
     <link rel="stylesheet" href="css/player.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <title>Radio Code</title>
 </head>
 
 <body>
     <div id="allmap"></div>
-    <div class="radio-player-container">
+    <div class="radio-player-container" id="radio-player-container">
         <div class="audio">
-            <audio id="player" autoplay>
-                <source id='player-src' src=" http://ctt.rgd.com.cn/fm914?t=1526125301">
+            <audio id="player" autoplay loop>
+                <source id='player-src' src="media/zero.mp3">
             </audio>
         </div>
         <div class="playlist" id="playlist">
             <div class='playlist-header' id="playlist-header" onclick="toggleFold()">
                 <dt>
                     <dl>
-                        <label>正在播放channel 1</label>
+                        <label>正在播放-{{ cur_ch }}</label>
                         <i class="icon icon-arrow-right"></i>
                     </dl>
                     <dt>
             </div>
             <div class='playlist-body' id="playlist-body">
-                <dt>
-                    <dl onclick="playChannel(this)">channel 1</dl>
-                    <dl>channel 2</dl>
-                    <dl>channel 3</dl>
-                    <dl>channel 3</dl>
-                    <dl>channel 3</dl>
+                <dt v-for="ch in ch_list">
+                    <dl v-on:click="play(ch.src)">{{ ch.name }}</dl>
                 </dt>
             </div>
         </div>
@@ -61,6 +58,11 @@
         script.type = "text/javascript";
         script.src = "http://api.map.baidu.com/api?v=2.0&ak=gUauia1RTNGjAEr09Dc3fFNtcTRN0AWm&callback=init";
         document.body.appendChild(script);
+
+        //初始化vue
+        window.vueapp = new VueApp("radio-player-container");
+
+        //初始化播放器
         window.radioapp = new RadioCodeApp('player');
     }
     function init() {
