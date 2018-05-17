@@ -24,7 +24,7 @@ function toggleFold(){
         document.getElementById('playlist').style.height="50px";
         l.classList.remove('active');
     } else {
-        document.getElementById('playlist').style.height="225px";    
+        document.getElementById('playlist').style.height="250px";    
         l.classList.add('active');
     }
 }
@@ -35,10 +35,10 @@ function playChannel(el){
 
 class VueApp {
     constructor(id){
-        this.element_id = id;
+        // this.element_id = id;
         //初始化vue
         this.app = new Vue({
-            el: '#' + this.element_id,
+            el: '#' + id,
             data: {
                 cur_ch: '',
                 ch_list: [
@@ -46,13 +46,41 @@ class VueApp {
                     {name: "channel2", src: ""},
                     {name: "channel3", src: ""},
                     {name: "channel4", src: ""},
-                    {name: "channel5", src: ""}
-                ]
+                    {name: "channel5", src: ""},
+                ],
+                ch_list_all: [
+                    {name: "广东新闻广播", src: "http://ctt.rgd.com.cn/fm914?t=1526125301"},
+                    {name: "channel2", src: ""},
+                    {name: "channel3", src: ""},
+                    {name: "channel4", src: ""},
+                    {name: "channel5", src: ""},
+                    {name: "channel6", src: ""}
+                ],
+                cur_page: 1,
+                total_page: 2,
             },
             methods: {
-                play: function (src) {
-                    alert(src);
+                play: function (src, name) {
+                    this.cur_ch = name;
                     window.radioapp.changeChannel(src);
+                },
+                pageDown: function (){  // 向后翻页
+                    if (this.cur_page >= this.total_page) {
+                        return
+                    }
+                    var s = this.cur_page * 5;
+                    var e = (this.cur_page + 1) * 5;
+                    this.cur_page += 1;
+                    this.ch_list = this.ch_list_all.slice(s, e);
+                }, 
+                pageUp: function (){  // 向前翻页
+                    if (this.cur_page <= 1) {
+                        return
+                    }
+                    this.cur_page -= 1;
+                    var s = (this.cur_page - 1) * 5;
+                    var e = this.cur_page * 5;
+                    this.ch_list = this.ch_list_all.slice(s, e);
                 }
             }
         })

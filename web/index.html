@@ -43,7 +43,18 @@
             </div>
             <div class='playlist-body' id="playlist-body">
                 <dt v-for="ch in ch_list">
-                    <dl v-on:click="play(ch.src)">{{ ch.name }}</dl>
+                    <dl v-on:click="play(ch.src, ch.name)">{{ ch.name }}</dl>
+                </dt>
+            </div>
+            <div class='pagination'>
+                <dt>
+                    <dl>
+                        <label class='pagination-label'>{{ cur_page }}</label>
+                        <label class='pagination-label'>|</label>
+                        <label class='pagination-label'>{{ total_page }}</label>
+                        <label class='pagination-label'><a href="#" v-on:click="pageUp()">上一页</a></label>
+                        <label class='pagination-label'><a href="#" v-on:click="pageDown()">下一页</a></label>
+                    </dl>
                 </dt>
             </div>
         </div>

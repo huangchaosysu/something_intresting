@@ -35,3 +35,11 @@ dl {
     margin-top: 14px;
     margin-bottom: 14px; 
 }
+
+div.pagination {
+    padding-left: 200px;
+}
+
+.pagination-label {
+    margin-right: 5px
+}
