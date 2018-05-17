@@ -17,9 +17,10 @@
     </style>
     <script src="https://cdn.plyr.io/3.3.7/plyr.js"></script>
     <script src="js/player.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.3.7/plyr.css">
     <link rel="stylesheet" href="css/player.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <link rel="stylesheet" href="css/iconic/font/css/open-iconic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <title>Radio Code</title>
 </head>
@@ -37,7 +38,8 @@
                 <dt>
                     <dl>
                         <label>正在播放-{{ cur_ch }}</label>
-                        <i class="icon icon-arrow-right"></i>
+                        <!-- <i class="icon icon-arrow-right"></i> -->
+                        <span class="icon oi" data-glyph="list"></span>
                     </dl>
                     <dt>
             </div>
@@ -72,9 +74,9 @@
 
         //初始化vue
         window.vueapp = new VueApp("radio-player-container");
-
         //初始化播放器
         window.radioapp = new RadioCodeApp('player');
+        window.vueapp.app.initc();
     }
     function init() {
         var map = new BMap.Map("allmap", { minZoom: 4, maxZoom: 8 });            // 创建Map实例

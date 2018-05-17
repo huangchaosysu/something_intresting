@@ -41,21 +41,8 @@ class VueApp {
             el: '#' + id,
             data: {
                 cur_ch: '',
-                ch_list: [
-                    {name: "广东新闻广播", src: "http://ctt.rgd.com.cn/fm914?t=1526125301"},
-                    {name: "channel2", src: ""},
-                    {name: "channel3", src: ""},
-                    {name: "channel4", src: ""},
-                    {name: "channel5", src: ""},
-                ],
-                ch_list_all: [
-                    {name: "广东新闻广播", src: "http://ctt.rgd.com.cn/fm914?t=1526125301"},
-                    {name: "channel2", src: ""},
-                    {name: "channel3", src: ""},
-                    {name: "channel4", src: ""},
-                    {name: "channel5", src: ""},
-                    {name: "channel6", src: ""}
-                ],
+                ch_list: [],
+                ch_list_all: [],
                 cur_page: 1,
                 total_page: 2,
             },
@@ -81,6 +68,15 @@ class VueApp {
                     var s = (this.cur_page - 1) * 5;
                     var e = this.cur_page * 5;
                     this.ch_list = this.ch_list_all.slice(s, e);
+                },
+                initc: function (){
+                    axios.get('/web/data/default.json')
+                        .then(
+                            function(response){
+                                window.vueapp.app.ch_list_all = response.data;
+                                window.vueapp.app.ch_list = window.vueapp.app.ch_list_all.slice(0, 5);
+                                setTimeout(function(){ window.vueapp.app.play(response.data[0].src, response.data[0].name); }, 2000);
+                        });
                 }
             }
         })

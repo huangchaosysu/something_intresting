@@ -43,3 +43,7 @@ div.pagination {
 .pagination-label {
     margin-right: 5px
 }
+
+a {
+    color: black
+}
