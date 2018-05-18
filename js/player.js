@@ -70,7 +70,7 @@ class VueApp {
                     this.ch_list = this.ch_list_all.slice(s, e);
                 },
                 initc: function (){
-                    axios.get('/web/data/default.json')
+                    axios.get('/data/default.json')
                         .then(
                             function(response){
                                 window.vueapp.app.ch_list_all = response.data;
