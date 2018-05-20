@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="css/player.css">
     <link rel="stylesheet" href="css/iconic/font/css/open-iconic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=gUauia1RTNGjAEr09Dc3fFNtcTRN0AWm"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script> 
     <title>Radio Code</title>
 </head>
 
@@ -67,16 +71,17 @@
 <script type="text/javascript">
     //百度地图API功能
     function loadJScript() {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "http://api.map.baidu.com/api?v=2.0&ak=gUauia1RTNGjAEr09Dc3fFNtcTRN0AWm&callback=init";
-        document.body.appendChild(script);
-
+        // var script = document.createElement("script");
+        // script.type = "text/javascript";
+        // script.src = "http://api.map.baidu.com/api?v=2.0&ak=gUauia1RTNGjAEr09Dc3fFNtcTRN0AWm&callback=init";
+        // document.body.appendChild(script);
+        init()
         //初始化vue
         window.vueapp = new VueApp("radio-player-container");
         //初始化播放器
         window.radioapp = new RadioCodeApp('player');
         window.vueapp.app.initc();
+        window.vueapp.app.initmap();
     }
     function init() {
         window.baidu_map = new BMap.Map("allmap", { minZoom: 4, maxZoom: 8 });            // 创建Map实例
@@ -97,8 +102,6 @@
         });
         window.baidu_map.centerAndZoom(point, 5);
         window.baidu_map.enableScrollWheelZoom();                 //启用滚轮放大缩小
-
-        window.vueapp.app.initmap();
     }
     window.onload = loadJScript;  //异步加载地图
 </script>
