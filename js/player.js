@@ -74,8 +74,30 @@ class VueApp {
                         .then(
                             function(response){
                                 window.vueapp.app.ch_list_all = response.data;
+                                window.vueapp.app.total_page = Math.ceil(window.vueapp.app.ch_list_all.length/5)
                                 window.vueapp.app.ch_list = window.vueapp.app.ch_list_all.slice(0, 5);
                                 setTimeout(function(){ window.vueapp.app.play(response.data[0].src, response.data[0].name); }, 2000);
+                        });
+                },
+                initmap: function() {
+                    axios.get('/data/places.json')
+                        .then(
+                            function(response){
+                                var points = []
+                                // var beijing = new BMap.Point(39.904211, 116.407395);
+                                // points.push(beijing);
+                                for (var p of response.data){
+                                    points.push(new BMap.Point(p.geo[1], p.geo[0]));
+                                    // var marker = new BMap.Marker(point, {title: p.name});
+                                    // window.baidu_map.addOverlay(marker);
+                                }
+                                var options = {
+                                    size: BMAP_POINT_SIZE_NORMAL,
+                                    shape: BMAP_POINT_SHAPE_STAR,
+                                    color: '#d340c3'
+                                }
+                                var pointCollection = new BMap.PointCollection(points, options);
+                                window.baidu_map.addOverlay(pointCollection);
                         });
                 }
             }

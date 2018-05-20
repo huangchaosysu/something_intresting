@@ -79,16 +79,26 @@
         window.vueapp.app.initc();
     }
     function init() {
-        var map = new BMap.Map("allmap", { minZoom: 4, maxZoom: 8 });            // 创建Map实例
+        window.baidu_map = new BMap.Map("allmap", { minZoom: 4, maxZoom: 8 });            // 创建Map实例
         var point = new BMap.Point(116.404, 39.915); // 创建点坐标
         var top_left_control = new BMap.NavigationControl(); //左上角的缩放控件
-        map.addControl(top_left_control);
-        var mapStyle = {
-            features: ["water", "land"],//隐藏地图上的poi
-        }
-        map.setMapStyle(mapStyle);
-        map.centerAndZoom(point, 5);
-        map.enableScrollWheelZoom();                 //启用滚轮放大缩小
+        window.baidu_map.addControl(top_left_control);
+        var mapStyle = [
+            {
+                "featureType": "road",
+                "elementType": "all",
+                "stylers": {
+                    "visibility": "off"
+                }
+            }
+        ]
+        window.baidu_map.setMapStyle({
+            styleJson:mapStyle,
+        });
+        window.baidu_map.centerAndZoom(point, 5);
+        window.baidu_map.enableScrollWheelZoom();                 //启用滚轮放大缩小
+
+        window.vueapp.app.initmap();
     }
     window.onload = loadJScript;  //异步加载地图
 </script>

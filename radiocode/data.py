@@ -4,6 +4,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "radiocode.settings")
 import django
 django.setup()
 
+import json
 from radio.models import Channel, Place
 
 def main():
@@ -19,5 +20,15 @@ def main():
         f.flush()
         f.close()
 
+def places():
+    ps = []
+    for p in Place.objects.all():
+        pl = {'name': p.p_id, 'geo': json.loads(p.geo)}
+        ps.append(pl)
+
+    with open('data/places.json', 'a+') as f:
+        f.write(json.dumps(ps))
+
+
 if __name__ == '__main__':
-    main()
+    places()
