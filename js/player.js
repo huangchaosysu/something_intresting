@@ -87,7 +87,12 @@ class VueApp {
                         }
                         window.markerClusterer = new BMapLib.MarkerClusterer(window.baidu_map, {markers:markers});
                     });
-                    
+                    function showInfo(e){
+                        if(e.overlay){
+                            alert('您点击的是覆盖物：'+e.overlay.toString() + e.overlay.getTitle());   
+                        } 
+                    }
+                    window.baidu_map.addEventListener("click", showInfo);
                 }
             }
         })
