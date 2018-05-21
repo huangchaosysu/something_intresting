@@ -80,11 +80,11 @@
         window.vueapp = new VueApp("radio-player-container");
         //初始化播放器
         window.radioapp = new RadioCodeApp('player');
-        window.vueapp.app.initc();
+        window.vueapp.app.initc('/data/default.json');
         window.vueapp.app.initmap();
     }
     function init() {
-        window.baidu_map = new BMap.Map("allmap", { minZoom: 4, maxZoom: 8 });            // 创建Map实例
+        window.baidu_map = new BMap.Map("allmap", { minZoom: 4, maxZoom: 15 });            // 创建Map实例
         var point = new BMap.Point(116.404, 39.915); // 创建点坐标
         var top_left_control = new BMap.NavigationControl(); //左上角的缩放控件
         window.baidu_map.addControl(top_left_control);
@@ -102,6 +102,14 @@
         });
         window.baidu_map.centerAndZoom(point, 5);
         window.baidu_map.enableScrollWheelZoom();                 //启用滚轮放大缩小
+        function clickCallback(e){
+            if(e.overlay){
+                var pname = e.overlay.getTitle();
+                var path = '/data/' + pname[0] + '/' + pname + '.json';
+                window.vueapp.app.initc(path);
+            }
+        }
+        window.baidu_map.addEventListener("click", clickCallback);
     }
     window.onload = loadJScript;  //异步加载地图
 </script>
