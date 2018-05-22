@@ -43,6 +43,10 @@
     .pagination-label {
         margin-right: 5px
     }
+    .play-title {
+        display: inline-block;
+        width: 230px;
+    }
 
 }
 
@@ -96,7 +100,10 @@
     .pagination-label {
         margin-right: 5px
     }
-
+    .play-title {
+        display: inline-block;
+        width: 85%;
+    }
 }
 
 a {
