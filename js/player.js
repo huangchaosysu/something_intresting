@@ -24,7 +24,7 @@ function toggleFold(){
         document.getElementById('playlist').style.height="50px";
         l.classList.remove('active');
     } else {
-        var h = 50 + window.vueapp.app.ch_list.length * 36 + 50;
+        var h = 50 + window.vueapp.app.ch_list.length * 33 + 45;
         document.getElementById('playlist').style.height=String(h) + "px";    
         l.classList.add('active');
     }
@@ -89,12 +89,6 @@ class VueApp {
                         }
                         window.markerClusterer = new BMapLib.MarkerClusterer(window.baidu_map, {markers:markers});
                     });
-                    function showInfo(e){
-                        if(e.overlay){
-                            alert('您点击的是覆盖物：'+e.overlay.toString() + e.overlay.getTitle());   
-                        } 
-                    }
-                    window.baidu_map.addEventListener("click", showInfo);
                 }
             }
         })
