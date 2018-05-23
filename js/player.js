@@ -24,7 +24,7 @@ function toggleFold(){
         document.getElementById('playlist').style.height="50px";
         l.classList.remove('active');
     } else {
-        var h = 50 + window.vueapp.app.ch_list.length * 33 + 45;
+        var h = 50 + window.vueapp.app.ch_list.length * 36 + 45;
         document.getElementById('playlist').style.height=String(h) + "px";    
         l.classList.add('active');
     }
