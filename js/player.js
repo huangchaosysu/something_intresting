@@ -69,8 +69,8 @@ class VueApp {
                     var e = this.cur_page * 5;
                     this.ch_list = this.ch_list_all.slice(s, e);
                 },
-                initc: function (){
-                    axios.get('/data/default.json')
+                initc: function (path){
+                    axios.get(path)
                         .then(
                             function(response){
                                 window.vueapp.app.ch_list_all = response.data;
@@ -80,7 +80,8 @@ class VueApp {
                         });
                 },
                 initmap: function() {
-                    axios.get('/data/places.json').then(function(response){ var markers=[];
+                    axios.get('/data/places.json').then(function(response){ 
+                        var markers=[];
                         for (var i of response.data){
                             var p = new BMap.Point(i.geo[1], i.geo[0]);
                             markers.push(new BMap.Marker(p, {title: i.name}));

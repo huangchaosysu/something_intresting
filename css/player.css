@@ -1,47 +1,109 @@
-.radio-player-container {
-    width: 300px;
-    position: absolute;
-    right: 50px;
-    bottom: 50px;
-    z-index: 1000;
+@media screen and (min-width: 540px) {
+    .radio-player-container {
+        width: 300px;
+        position: absolute;
+        right: 50px;
+        bottom: 50px;
+        z-index: 1000;
+    }
+
+    div.playlist {
+        margin-top: 10px;
+        background-color: rgba(255,255,255,0.9);
+        height:50px;
+        transition:height 1s;
+        -moz-transition:height 1s; /* Firefox 4 */
+        -webkit-transition:height 1s; /* Safari and Chrome */
+        -o-transition:height 1s; /* Opera */
+        overflow-y: hidden;
+    }
+
+    div.playlist-header {
+        padding-left: 15px;
+        padding-right: 20px;
+    }
+
+    div.playlist-body {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    div.pagination {
+        padding-left: 120px;
+    }
+
+    .icon {
+        float: right;
+    }
+
+    dl {
+        margin-top: 14px;
+        margin-bottom: 14px; 
+    }
+
+    .pagination-label {
+        margin-right: 5px
+    }
+    .play-title {
+        display: inline-block;
+        width: 230px;
+    }
+
 }
 
-div.playlist {
-    margin-top: 10px;
-    background-color: rgba(255,255,255,0.9);
-    height:50px;
-    transition:height 1s;
-    -moz-transition:height 1s; /* Firefox 4 */
-    -webkit-transition:height 1s; /* Safari and Chrome */
-    -o-transition:height 1s; /* Opera */
-    overflow-y: hidden;
-}
+@media screen and (max-width: 540px) {
+    .radio-player-container {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        z-index: 1000;
+    }
 
-div.playlist-header {
-    padding-left: 15px;
-    padding-right: 20px;
-}
+    div.audio {
+        width: 90%;
+        margin: 0 auto;
+    }
+    div.playlist {
+        width:90%;
+        margin: auto;
+        margin-top: 10px;
+        background-color: rgba(255,255,255,0.9);
+        height:50px;
+        transition:height 1s;
+        -moz-transition:height 1s; /* Firefox 4 */
+        -webkit-transition:height 1s; /* Safari and Chrome */
+        -o-transition:height 1s; /* Opera */
+        overflow-y: hidden;
+    }
 
-div.playlist-body {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+    div.playlist-header {
+        padding-left: 15px;
+        padding-right: 20px;
+    }
 
-.icon {
-    float: right;
-}
+    div.playlist-body {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    div.pagination {
+        padding-left: 15px;
+    }
 
-dl {
-    margin-top: 14px;
-    margin-bottom: 14px; 
-}
+    .icon {
+        float: right;
+    }
 
-div.pagination {
-    padding-left: 120px;
-}
+    dl {
+        margin-top: 14px;
+        margin-bottom: 14px; 
+    }
 
-.pagination-label {
-    margin-right: 5px
+    .pagination-label {
+        margin-right: 5px
+    }
+    .play-title {
+        display: inline-block;
+        width: 85%;
+    }
 }
 
 a {
